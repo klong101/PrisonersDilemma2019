@@ -16,15 +16,12 @@ strategy_description = 'How does this strategy decide?'
 
     
 def move(my_history, their_history, my_score, their_score):
-   if 'b' in their_history or len(their_history)>50: 
-        return 'b' # Betray
-        if random.random()<0.5:
-            return 'c'
-            
-        
-        
- 
-            
+    ''' Arguments accepted: my_history, their_history are strings.
+    my_score, their_score are ints.
+    
+    Make my move.
+    Returns 'c' or 'b'. 
+    '''
 
     
           
@@ -41,16 +38,16 @@ def move(my_history, their_history, my_score, their_score):
 
     
 
-            def test_move(my_history, their_history, my_score, their_score, result):
-                '''calls move(my_history, their_history, my_score, their_score)
+def test_move(my_history, their_history, my_score, their_score, result):
+    '''calls move(my_history, their_history, my_score, their_score)
     from this module. Prints error if return value != result.
     Returns True or False, dpending on whether result was as expected.
     '''
-                real_result = move(my_history, their_history, my_score, their_score)
-                if real_result == result:
-                    return True
-                else: 
-                    print("move(" +
+    real_result = move(my_history, their_history, my_score, their_score)
+    if real_result == result:
+        return True
+    else:
+        print("move(" +
             ", ".join(["'"+my_history+"'", "'"+their_history+"'",
                        str(my_score), str(their_score)])+
             ") returned " + "'" + real_result + "'" +
@@ -60,15 +57,14 @@ def move(my_history, their_history, my_score, their_score):
 if __name__ == '__main__':
      
     # Test 1: Betray on first move.
-        def test_move(my_history, their_history, my_score, their_score, result):
-            if test_move(my_history='ccc',
-              their_history='ccc', 
-              my_score=12,
-              their_score=15,
+    if test_move(my_history='',
+              their_history='', 
+              my_score=0,
+              their_score=0,
               result='b'):
-                print 'Test passed'
+         print 'Test passed'
      # Test 2: Continue betraying if they collude despite being betrayed.
-                test_move(my_history='bbb',
+    test_move(my_history='bbb',
               their_history='ccc', 
               # Note the scores are for testing move().
               # The history and scores don't need to match unless
@@ -78,4 +74,4 @@ if __name__ == '__main__':
               # move('bbb', 'ccc', 0, 0) returns 'b'.
               my_score=0, 
               their_score=0,
-              result='b')
+              result='b')             
